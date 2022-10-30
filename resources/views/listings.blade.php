@@ -1,26 +1,23 @@
 @extends('layout')
 
 @section('content')
+@include('partials._hero')
+@include('partials._search')
 
-@if (count($listings) == 0)
-    <p> No Listings Found </p>
-@endif
-
-@foreach ($listings as $listing)
+<div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
 {{-- cara lain untuk if statement --}}
-{{-- @unless (count($listings) == 0)
+@unless (count($listings) == 0)
+@foreach ($listings as $listing)
 
-@else <p> No Listings found </p>
+    <x-listing-content :listing="$listing"/>
 
-@endunless --}}
-
-<h2>
-    <a href="/listings/{{$listing['id']}}">{{$listing['tittle']}}</a>
-</h2>
-<p>
-    {{$listing['description']}}
-</p>
 @endforeach
+
+    @else <p> No Listings found </p>
+@endunless
+
+</div>
+
 
 @endsection
