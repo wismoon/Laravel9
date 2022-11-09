@@ -47,14 +47,24 @@
         </nav>
     {{-- VIEW OUTPUT --}}
     <main>
-    @yield('content')
+        {{-- using @yield() for content inside layout
+             where in view blade.php you will need to put
+             @extends('') and @section('')/@endsection
+             to use this fiture
+        --}}
+        @yield('content')
+        {{-- using {{$slot}} for content inside layout
+             where in view blade.php you will need to put
+             component that you use like <x-layout>
+        --}}
+        {{-- {{$slot}} --}}
     </main>
 
     <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
             <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
 
             <a
-                href="create.html"
+                href="/listings/create"
                 class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
                 >Post Job</a
             >
